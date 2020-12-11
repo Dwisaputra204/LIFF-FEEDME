@@ -65,13 +65,23 @@ function initializeApp() {
     getUsername();
     sendMessage();
     openExternalBrowser();
+    loginLine();
     cekStatus();
     displayLiffData();
     displayIsInClientInfo();
     registerButtonHandlers();
 
-    // check if the user is logged in/out, and disable inappropriate button
-    
+}
+
+
+function loginLine(){
+    document.getElementById('liffLoginButton').addEventListener('click', function() {
+        if (!liff.isLoggedIn()) {
+            // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
+            window.location.href = "index.html";
+            liff.login();
+        }
+    });
 }
 
 function cekStatus() {
@@ -239,12 +249,7 @@ function registerButtonHandlers() {
     });
 
     // login call, only when external browser is used
-    document.getElementById('liffLoginButton').addEventListener('click', function() {
-        if (!liff.isLoggedIn()) {
-            // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
-            liff.login();
-        }
-    });
+    
 
     // logout call only when external browse
     document.getElementById('liffLogoutButton').addEventListener('click', function() {
