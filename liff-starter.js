@@ -62,6 +62,7 @@ function initializeLiff(myLiffId) {
  * Initialize the app by calling functions handling individual app components
  */
 function initializeApp() {
+    getUsername();
     displayLiffData();
     displayIsInClientInfo();
     registerButtonHandlers();
