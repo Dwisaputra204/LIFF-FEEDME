@@ -106,6 +106,7 @@ function displayIsInClientInfo() {
 function registerButtonHandlers() {
     // openWindow call
     document.getElementById('openWindowButton').addEventListener('click', function() {
+        alert("ok")
         liff.openWindow({
             url: 'https://feedme204.herokuapp.com/',
             external: true
