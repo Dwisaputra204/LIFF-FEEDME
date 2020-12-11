@@ -95,6 +95,8 @@ function loginLine(){
         if (!liff.isLoggedIn()) {
             // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
             liff.login();
+            userMenu.hidden = false
+            userLoginForm.hidden = true
         }
     });
 }
