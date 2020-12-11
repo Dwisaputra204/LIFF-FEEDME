@@ -63,6 +63,7 @@ function initializeLiff(myLiffId) {
  */
 function initializeApp() {
     getUsername();
+    sendMessage();
     displayLiffData();
     displayIsInClientInfo();
     registerButtonHandlers();
@@ -112,6 +113,24 @@ function getUsername(){
     });
 }
 
+// Send Message
+function sendMessage(){
+    document.getElementById('sendMessageButton').addEventListener('click', function() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            liff.sendMessages([{
+                'type': 'text',
+                'text': "You've successfully sent a message! Hooray!"
+            }]).then(function() {
+                window.alert('Message sent');
+            }).catch(function(error) {
+                window.alert('Error sending message: ' + error);
+            });
+        }
+    });
+}
+
 
 /**
 * Register event handlers for the buttons displayed in the app
@@ -136,20 +155,7 @@ function registerButtonHandlers() {
     });
 
     // sendMessages call
-    document.getElementById('sendMessageButton').addEventListener('click', function() {
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.sendMessages([{
-                'type': 'text',
-                'text': "You've successfully sent a message! Hooray!"
-            }]).then(function() {
-                window.alert('Message sent');
-            }).catch(function(error) {
-                window.alert('Error sending message: ' + error);
-            });
-        }
-    });
+    
 
     // scanCode call
     document.getElementById('scanQrCodeButton').addEventListener('click', function() {
