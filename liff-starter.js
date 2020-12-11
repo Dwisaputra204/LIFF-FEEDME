@@ -100,6 +100,29 @@ function displayIsInClientInfo() {
     }
 }
 
+// Display User Name 
+function getUsername(){
+    liff.getProfile().then(function(profile) {
+        // document.getElementById('userIdProfileField').textContent = profile.userId;
+        document.getElementById('username').textContent = profile.displayName;
+
+        const profilePictureDiv = document.getElementById('profilePictureDiv');
+        if (profilePictureDiv.firstElementChild) {
+            profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+        }
+        const img = document.createElement('img');
+        img.src = profile.pictureUrl;
+        img.alt = 'Profile Picture';
+        profilePictureDiv.appendChild(img);
+
+        document.getElementById('statusMessageField').textContent = profile.statusMessage;
+        toggleProfileData();
+    }).catch(function(error) {
+        window.alert('Error getting profile: ' + error);
+    });
+}
+
+
 /**
 * Register event handlers for the buttons displayed in the app
 */
@@ -167,24 +190,7 @@ function registerButtonHandlers() {
 
     // get profile call
     document.getElementById('getProfileButton').addEventListener('click', function() {
-        liff.getProfile().then(function(profile) {
-            document.getElementById('userIdProfileField').textContent = profile.userId;
-            document.getElementById('displayNameField').textContent = profile.displayName;
-
-            const profilePictureDiv = document.getElementById('profilePictureDiv');
-            if (profilePictureDiv.firstElementChild) {
-                profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-            }
-            const img = document.createElement('img');
-            img.src = profile.pictureUrl;
-            img.alt = 'Profile Picture';
-            profilePictureDiv.appendChild(img);
-
-            document.getElementById('statusMessageField').textContent = profile.statusMessage;
-            toggleProfileData();
-        }).catch(function(error) {
-            window.alert('Error getting profile: ' + error);
-        });
+        
     });
 
     document.getElementById('shareTargetPicker').addEventListener('click', function () {
