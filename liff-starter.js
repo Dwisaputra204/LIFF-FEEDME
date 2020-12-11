@@ -70,12 +70,14 @@ function initializeApp() {
     registerButtonHandlers();
 
     // check if the user is logged in/out, and disable inappropriate button
+    
+}
+
+function cekStatus() {
     if (liff.isLoggedIn()) {
-        // document.getElementById('liffLoginButton').disabled = true;
-        alert("Success Login")
+        alert("Login Success")
     } else {
-        // document.getElementById('liffLogoutButton').disabled = true;
-        alert("Belum Login")
+        alert("Anda Belum Login")
     }
 }
 
