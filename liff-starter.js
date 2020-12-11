@@ -151,10 +151,17 @@ function sendMessage(){
     });
 }
 
+function loginLine(){
+    document.getElementById('liffLoginButton').addEventListener('click', function() {
+        if (!liff.isLoggedIn()) {
+            // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
+            liff.login();
+        }
+    });
+}
 
 function openExternalBrowser() {
     document.getElementById('openWindowButton').addEventListener('click', function() {
-        alert("ok")
         liff.openWindow({
             url: 'https://feedme204.herokuapp.com/',
             external: true
