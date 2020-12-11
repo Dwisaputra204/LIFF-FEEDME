@@ -64,6 +64,7 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     getUsername();
     sendMessage();
+    openExternalBrowser();
     displayLiffData();
     displayIsInClientInfo();
     registerButtonHandlers();
@@ -151,11 +152,7 @@ function sendMessage(){
 }
 
 
-/**
-* Register event handlers for the buttons displayed in the app
-*/
-function registerButtonHandlers() {
-    // openWindow call
+function openExternalBrowser() {
     document.getElementById('openWindowButton').addEventListener('click', function() {
         alert("ok")
         liff.openWindow({
@@ -163,6 +160,14 @@ function registerButtonHandlers() {
             external: true
         });
     });
+}
+
+/**
+* Register event handlers for the buttons displayed in the app
+*/
+function registerButtonHandlers() {
+    // openWindow call
+    
 
     // closeWindow call
     document.getElementById('closeWindowButton').addEventListener('click', function() {
