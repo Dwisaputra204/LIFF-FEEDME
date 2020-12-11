@@ -89,6 +89,7 @@ function cekStatus() {
         alert("Login Success")
     } else {
         alert("Anda Belum Login")
+        window.location.href = "login.html";
     }
 }
 
