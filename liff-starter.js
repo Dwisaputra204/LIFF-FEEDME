@@ -65,6 +65,7 @@ function initializeApp() {
     getUsername();
     sendMessage();
     openExternalBrowser();
+    cekStatus();
     displayLiffData();
     displayIsInClientInfo();
     registerButtonHandlers();
