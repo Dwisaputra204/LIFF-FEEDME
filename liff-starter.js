@@ -107,7 +107,7 @@ function registerButtonHandlers() {
     // openWindow call
     document.getElementById('openWindowButton').addEventListener('click', function() {
         liff.openWindow({
-            url: 'https://line.me',
+            url: 'https://feedme204.herokuapp.com/',
             external: true
         });
     });
@@ -257,17 +257,3 @@ function toggleElement(elementId) {
     }
 }
 
-document.getElementById('sendMessageButton').addEventListener('click', function() {
-    if (!liff.isInClient()) {
-        sendAlertIfNotInClient();
-    } else {
-        liff.sendMessages([{
-            'type': 'text',
-            'text': "Anda telah menggunakan fitur Send Message!"
-        }]).then(function() {
-            window.alert('Ini adalah pesan dari fitur Send Message');
-        }).catch(function(error) {
-            window.alert('Error sending message: ' + error);
-        });
-    }
-});
