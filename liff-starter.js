@@ -61,7 +61,12 @@ function initializeLiff(myLiffId) {
 /**
  * Initialize the app by calling functions handling individual app components
  */
+
+const userLoginForm = document.getElementById('loginForm')
+const userMenu = document.getElementById('userHasLogin') 
+
 function initializeApp() {
+    userMenu.hidden = true
     cekStatus();
 }
 
@@ -69,6 +74,8 @@ function initializeApp() {
 function cekStatus() {
     if (liff.isLoggedIn()) {
         alert("Login Success")
+        userMenu.hidden = false
+        userLoginForm.hidden = true
         getUsername();
         sendMessage();
         openExternalBrowser();
@@ -76,7 +83,8 @@ function cekStatus() {
         displayIsInClientInfo();
         registerButtonHandlers();
     } else {
-        window.location.href = "login.html";
+        userMenu.hidden = true
+        userLoginForm.hidden = false
         loginLine();
     }
 }
@@ -86,7 +94,6 @@ function loginLine(){
     document.getElementById('liffLoginButton').addEventListener('click', function() {
         if (!liff.isLoggedIn()) {
             // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
-            window.location.href = "index.html";
             liff.login();
         }
     });
