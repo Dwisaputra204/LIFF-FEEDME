@@ -1,3 +1,4 @@
+import "./app"
 window.onload = function() {
     const useNodeJS = false;   // if you are not using a node server, set this value to false
     const defaultLiffId = "1655315353-wexe5xpj";   // change the default LIFF value if you are not using a node server
@@ -121,9 +122,18 @@ function sendMessage(){
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': "You've successfully sent a message! Hooray!"
+                'text': `
+                Hello,
+                Terima kasih telah memesan di FeedMe
+
+                ${data.sumOrderOfFood} Makanan
+                ${data.sumOrderOfDrink} Minuman
+
+                Pesanan akan diproses.
+                Mohon menunggu :)
+                `
             }]).then(function() {
-                window.alert('Message sent');
+                window.alert('Pesan Terkirim');
             }).catch(function(error) {
                 window.alert('Error sending message: ' + error);
             });
