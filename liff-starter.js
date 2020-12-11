@@ -72,13 +72,12 @@ function cekStatus() {
         getUsername();
         sendMessage();
         openExternalBrowser();
-        loginLine();
         displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
     } else {
-        alert("Anda Belum Login")
         window.location.href = "login.html";
+        loginLine();
     }
 }
 
