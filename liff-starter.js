@@ -115,6 +115,8 @@ function getUsername(){
 
 // Send Message
 function sendMessage(){
+    document.getElementById('sendMessageButton').addEventListener('click', function() {
+        
     const text = 
     `
     Terima kasih telah memesan di FeedMe
@@ -123,9 +125,8 @@ function sendMessage(){
     ${data.sumOrderOfFood} Makanan
     ${data.sumOrderOfDrink} Minuman
     
-    Mohon menunggu pesana dikirim ya :)
+    Mohon menunggu pesanan dikirim ya :)
     `
-    document.getElementById('sendMessageButton').addEventListener('click', function() {
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();
         } else {
