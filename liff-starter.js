@@ -79,20 +79,8 @@ function cekStatus() {
         openExternalBrowser();
         logoutLine();
     } else {
-        userMenu.hidden = true
-        userLoginForm.hidden = false
-        userLogoutButton.hidden = true
         loginLine();
     }
-}
-
-
-function loginLine(){
-    document.getElementById('liffLoginButton').addEventListener('click', function() {
-        if (!liff.isLoggedIn()) {
-            liff.login();
-        }
-    });
 }
 
 
@@ -174,6 +162,7 @@ function loginLine(){
         if (!liff.isLoggedIn()) {
             // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
             liff.login();
+            window.location.reload();
         }
     });
 }
