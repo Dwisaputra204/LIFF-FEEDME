@@ -72,8 +72,10 @@ function initializeApp() {
 
     if (!liff.isInClient()) {
         document.getElementById("openWindowButton").hidden = true;
+        userLogoutButton.hidden = false
     } else {
         document.getElementById("openWindowButton").hidden = false;
+        userLogoutButton.hidden = true
     }
 }
 
@@ -82,7 +84,6 @@ function cekStatus() {
     if (liff.isLoggedIn()) {
         userMenu.hidden = false
         userLoginForm.hidden = true
-        userLogoutButton.hidden = false
         getUsername();
         sendMessage();
         openExternalBrowser();
@@ -90,7 +91,6 @@ function cekStatus() {
     } else {
         userMenu.hidden = true
         userLoginForm.hidden = false
-        userLogoutButton.hidden = true
         loginLine();
     }
 }
