@@ -64,23 +64,24 @@ function initializeLiff(myLiffId) {
 
 const userLoginForm = document.getElementById('loginForm')
 const userMenu = document.getElementById('userHasLogin') 
+const userLogoutButton = document.getElementById('liffLogoutButton')
 
 function initializeApp() {
-    userMenu.hidden = true
+    showLoginLogout();
     cekStatus();
 }
 
 
 function cekStatus() {
     if (liff.isLoggedIn()) {
-        userMenu.hidden = false
-        userLoginForm.hidden = true
         getUsername();
         sendMessage();
         openExternalBrowser();
+        logoutLine();
     } else {
         userMenu.hidden = true
         userLoginForm.hidden = false
+        userLogoutButton.hidden = true
         loginLine();
     }
 }
@@ -143,14 +144,7 @@ function sendMessage(){
     });
 }
 
-function loginLine(){
-    document.getElementById('liffLoginButton').addEventListener('click', function() {
-        if (!liff.isLoggedIn()) {
-            // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
-            liff.login();
-        }
-    });
-}
+
 
 function openExternalBrowser() {
     document.getElementById('openWindowButton').addEventListener('click', function() {
@@ -162,6 +156,27 @@ function openExternalBrowser() {
 }
 
 
+function showLoginLogout(){
+    if (!liff.isInClient()) {
+        userMenu.hidden = true
+        userLoginForm.hidden = false
+        userLogoutButton.hidden = true
+    } else {
+        userMenu.hidden = false
+        userLoginForm.hidden = true
+        userLogoutButton.hidden = false
+    }
+}
+
+
+function loginLine(){
+    document.getElementById('liffLoginButton').addEventListener('click', function() {
+        if (!liff.isLoggedIn()) {
+            // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
+            liff.login();
+        }
+    });
+}
 
 
 function logoutLine(){
