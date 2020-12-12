@@ -69,6 +69,10 @@ const userLogoutButton = document.getElementById('liffLogoutButton')
 function initializeApp() {
     userMenu.hidden = true
     cekStatus();
+
+    if (!liff.isInClient()) {
+        document.getElementById("openWindowButton").hidden = true;
+    }
 }
 
 
@@ -168,8 +172,6 @@ function openExternalBrowser() {
         });
     });
 }
-
-
 
 
 
