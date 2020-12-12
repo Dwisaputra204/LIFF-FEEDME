@@ -72,6 +72,8 @@ function initializeApp() {
 
     if (!liff.isInClient()) {
         document.getElementById("openWindowButton").hidden = true;
+    } else {
+        document.getElementById("openWindowButton").hidden = false;
     }
 }
 
