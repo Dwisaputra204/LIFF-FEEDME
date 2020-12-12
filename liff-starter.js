@@ -162,6 +162,8 @@ function openExternalBrowser() {
 }
 
 
+
+
 function logoutLine(){
     document.getElementById('liffLogoutButton').addEventListener('click', function() {
         if (liff.isLoggedIn()) {
